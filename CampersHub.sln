@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "campershub.client", "campershub.client\campershub.client.esproj", "{433CF474-AA9C-4AFD-7397-6DFBDF22CE37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampersHub.Server", "CampersHub.Server\CampersHub.Server.csproj", "{077E2E7E-6A83-4CC2-A9C8-030BB01E45FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{433CF474-AA9C-4AFD-7397-6DFBDF22CE37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{433CF474-AA9C-4AFD-7397-6DFBDF22CE37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{433CF474-AA9C-4AFD-7397-6DFBDF22CE37}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{433CF474-AA9C-4AFD-7397-6DFBDF22CE37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{433CF474-AA9C-4AFD-7397-6DFBDF22CE37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{433CF474-AA9C-4AFD-7397-6DFBDF22CE37}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{077E2E7E-6A83-4CC2-A9C8-030BB01E45FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{077E2E7E-6A83-4CC2-A9C8-030BB01E45FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{077E2E7E-6A83-4CC2-A9C8-030BB01E45FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{077E2E7E-6A83-4CC2-A9C8-030BB01E45FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52286D81-7F4B-4B7F-B968-90D357C72068}
+	EndGlobalSection
+EndGlobal
