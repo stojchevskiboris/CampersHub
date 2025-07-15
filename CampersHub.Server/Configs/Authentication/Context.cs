@@ -1,4 +1,6 @@
-﻿namespace CampersHub.Server.Configs.Authentication
+﻿using CampersHub.Server.Services.ViewModels.Users;
+
+namespace CampersHub.Server.Configs.Authentication
 {
     public static class Context
     {
@@ -9,5 +11,14 @@
             _httpContextAccessor = httpContextAccessor;
         }
 
+        public static int GetCurrentUserId()
+        {
+            if (_httpContextAccessor?.HttpContext?.Items["User"] is UserViewModel user)
+            {
+                return user.Id;
+            }
+
+            throw new Exception("User ID not found in the context.");
+        }
     }
 }

@@ -1,6 +1,7 @@
 using CampersHub.Server.Common.Constants;
 using CampersHub.Server.Configs;
 using CampersHub.Server.Configs.Authentication;
+using CampersHub.Server.Data;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -9,8 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // --- Configuration Section ---
 AppParameters.ConnectionString = builder.Configuration.GetConnectionString("devDb") ?? "";
-//builder.Services.AddDbContext<ChatAppDbContext>(options =>
-//    options.UseSqlServer(AppParameters.ConnectionString));
+builder.Services.AddDbContext<CampersHubDbContext>(options =>
+    options.UseSqlServer(AppParameters.ConnectionString));
 
 builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 
@@ -19,10 +20,6 @@ builder.Services.ConfigureRepositories();
 
 // --- Service Registration ---
 builder.Services.ConfigureServices();
-
-// --- SignalR Registration ---
-builder.Services.AddSignalR();
-builder.Services.AddSingleton<IDictionary<string, int>>(opt => new Dictionary<string, int>());
 
 // --- Validators Registration ---
 builder.Services.ConfigureValidators();
@@ -57,8 +54,8 @@ if (string.IsNullOrEmpty(AppParameters.ConnectionString))
 
 using (var scope = app.Services.CreateScope())
 {
-    //var dbContext = scope.ServiceProvider.GetRequiredService<ChatAppDbContext>();
-    //dbContext.Database.Migrate(); // dotnet ef database update
+    var dbContext = scope.ServiceProvider.GetRequiredService<CampersHubDbContext>();
+    dbContext.Database.Migrate(); // dotnet ef database update
 }
 
 // --- Middleware Configuration --- 
@@ -89,7 +86,7 @@ app.UseDefaultFiles();
 app.UseSerilogRequestLogging();
 app.UseCors("AllowAngularApp");
 app.UseAuthorization();
-//app.UseMiddleware<JwtMiddleware>();
+app.UseMiddleware<JwtMiddleware>();
 app.MapControllers();
 app.MapFallbackToFile("/index.html");
 

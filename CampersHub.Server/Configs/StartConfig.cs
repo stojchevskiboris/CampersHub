@@ -1,4 +1,8 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using CampersHub.Server.Data.Implementations;
+using CampersHub.Server.Data.Interfaces;
+using CampersHub.Server.Services.Implementations;
+using CampersHub.Server.Services.Interfaces;
+using Microsoft.OpenApi.Models;
 
 namespace CampersHub.Server.Configs
 {
@@ -7,13 +11,15 @@ namespace CampersHub.Server.Configs
         public static void ConfigureRepositories(this IServiceCollection services)
         {
             // --- Repository Registration ---
-            //services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMediaRepository, MediaRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
         }
 
         public static void ConfigureServices(this IServiceCollection services)
         {
             // --- Service Registration ---
-            //services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddHttpContextAccessor();
         }
